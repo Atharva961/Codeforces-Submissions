@@ -1,34 +1,36 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
     int t;
-    cin>>t;
+    cin >> t;
 
-    while(t--)
+    while (t--)
     {
         int n, k;
-        cin>>n>>k;
+        cin >> n >> k;
 
-        bool flag1 = true;
-        for(int x = 0; x<=n/2; x++)
+        if (n % 2 == 0)
         {
-            bool flag2 = true;
-            for(int y=0; y<=n/2; y++)
-            {
-                if(2*x + k*y == n)
-                {
-                    cout<<"YES"<<endl;
-                    flag1 = false;
-                    flag2 = false;
-                    break;
-                }
-            }
-            if(!flag2)break;
+            cout << "YES" << endl;
+            continue;
         }
-
-        if(flag1)cout<<"NO"<<endl;
-    }   
+        else if (n % k == 0)
+        {
+            cout << "YES" << endl;
+            continue;
+        }
+        else if ((n - k) % 2 == 0)
+        {
+            cout << "YES" << endl;
+            continue;
+        }
+        else
+        {
+            cout << "NO" << endl;
+            continue;
+        }
+    }
     return 0;
 }
