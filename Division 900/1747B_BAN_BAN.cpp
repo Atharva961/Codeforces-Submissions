@@ -11,16 +11,17 @@ int main()
         int n;
         cin>>n;
 
-        int ans = n - (n/3);
-        int no_swap = n/3;
+        int beg = 1, end = n*3;
 
-        cout<<ans<<endl;
-        int ptr = 1;
-        for(int i=3*(no_swap+1); i<=(3*n); i++)
+        int mid = end/2;
+
+        cout<<(mid/3) + (mid%3!=0)<<endl;
+
+        while(beg<end)
         {
-            cout<<ptr<<" "<<i<<endl;
-            if(ptr%3==2)ptr+=2;
-            else ptr+=1;
+            cout<<beg<<" "<<end<<endl;
+            beg+=3;
+            end-=3;
         }
     }   
     return 0;
