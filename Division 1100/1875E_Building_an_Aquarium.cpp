@@ -3,31 +3,42 @@ using namespace std;
 
 int main()
 {
-    int t;
+    long long t;
     cin>>t;
 
     while(t--)
     {
-        int n, x;
+        long long n, x;
         cin>>n>>x;
 
-        vector<int> nums;
+        vector<long long> nums;
 
-        for(int i=0; i<n; i++)
+        for(long long i=0; i<n; i++)
         {
-            int temp;
+            long long temp;
             cin>>temp;
             nums.push_back(temp);
         }
         sort(nums.begin(), nums.end());
+        
+        vector<long long> v;
+        long long sum = nums[0];
+        v.push_back(0);
 
-        int area = 0;
-        int ans = 0;
-
-        for(int i=0; i<nums.size(); i++)
+        for(long long i=1; i<nums.size(); i++)
         {
-            
+            long long area = i*nums[i];
+            v.push_back(area-sum);
+            sum+=nums[i];
         }
+
+        long long index = upper_bound(v.begin(), v.end(), x) - v.begin() - 1;
+        // cout<<index<<endl;
+        long long water = v[index];
+        long long left_over = x - water;
+        long long ans = nums[index];
+        ans+=(left_over/(index+1));
+        cout<<ans<<endl;
     }
     return 0;
 }
